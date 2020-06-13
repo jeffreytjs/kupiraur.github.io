@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Kupi Raur Poem Generator</title>
+	<!-- makes mobile queries work -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- Odometr includes -->
+	<link href="https://fonts.googleapis.com/css?family=Hammersmith+One" rel="stylesheet">
+
+<script type="text/javascript">
+	$(document).ready( function(){
+		$(".inner").fadeIn(2000)
+		window.odometerOptions = {
+			duration: 100
+		}
+
+		function convert_text_into_html(text){
+			var result = text
+			var result = result.replace(/\n/g,'<br/>')
+			var result = result + '<br/>' + '<br/>' + "- kupi raur"
+			return result
+		}
+
+		function RandomizeArray(arr){
+    		return arr.sort(function(){
+      			return Math.random() > Math.random() ? 1 : -1;  
+    		})
+  		}
+
+		// the poems are stored as 2-dim. array: [ text, author ]
+		var poems = RandomizeArray([
+			[`most often their name is mentioned\nmost of the time it is because of the journey they have made\nlike a letter from my future`],
+			[`no its not\nthat’s how it\nworks`],
+			[`\n\nmy name sounds too good to be true\n\nhe will lick your lipslike the world has almost exploded\n\nthis will be your last vacation`],
+			[`losing you\nis the most\npositive and negative\nthing i know`],
+			[`\non days\nlike this\ni need someone\nwho knows struggle\nas well as i do\ni tell him i work \ni am learning\nhow to remain kind\nin cruel situations`],
+			[`i don’t blame you for not knowing how to remain kind to us\nif that’s what you want to do`],
+			[`i was a grown man\nand i’m\nstill a boy`],
+			[`he placed his hands\non my mind\nyour lips were just convenient`]
+		])
+
+		var length = poems.length
+		var counter = 0
+		update_poem()
+
+		function update_poem(){
+			// read poem and its author from the data source
+			var poem_text = poems[counter][0]
+			//convert it into html
+			convert_text_into_html(poem_text)
+			//show it
+				$("#poem > p").html(convert_text_into_html(poem_text))
+		}
+
+		// when either of the buttons is clicked
+		$("button").click( function(){
+			//show next poem
+			counter++
+			setTimeout(next_step, 1000)
+			function next_step(){
+				if(counter < length) update_poem()
+				else{ 
+					$("#poem").html("That's all folks! (for now...)") 
+					$(".the-question").hide()
+					$("#about, #credits").fadeTo("slow",1)
+				}
+			}
+		})
+
+		//process keys
+		$(document).keydown(function(event){
+		  if (event.which == 39){
+		     event.preventDefault();
+		    $("#generator").click()
+		  }
+		})
+
+		// about page
+		$("#overlay").hide()
+
+		$("#about > a").click(function(){
+			$("#overlay").show()
+		})
+		$("#overlay > #more_info > a").click(function(){
+			$("#overlay").hide()
+		})
+	})
+</script>
+
+
+<style type="text/css">
+
+body {
+	background-image: url("poetry.jpg");
+	background-size: 110% 800%;                      /* <------ */
+	background-repeat: no-repeat;
+}
+
+a{
+	/*text-decoration: none;*/
+}
+*{
+	font-weight: normal !important;
+}
+
+.outer{
+	display: table;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	/*text-align: center;*/
+}
+
+.middle{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.inner{
+	display:none;
+	margin-left: auto;
+	margin-right: auto;
+	width: 200px;
+}
+
+#poem{
+	text-align: left;
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 1.1rem;
+}
+
+@media only screen and (max-width: 768px) {
+	#poem{
+		font-size: 1rem;
+	}
+}
+
+button{
+	font-size: 1rem;
+	background-color: #ffffff;
+	border-color: black;
+	padding: 2px 10px;
+}
+
+button:focus {
+	outline: none;
+}
+
+@media (hover: hover) {
+	button:hover {
+		color: white;
+		background-color: black;
+	}
+}
+
+#credits {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	font-family: Courier New, Courier, monospace;
+	font-size: 0.8rem;
+}
+
+#about {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	font-family: Helvetica, sans-serif;
+	font-size: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+	#credits {
+		font-size: 0.6rem;
+	}
+}
+
+#overlay {
+	position: absolute;
+	z-index:100;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	opacity: 0.95;
+	text-align: center;
+}
+
+#more_info {
+	display: inline-block;
+	font-family: Helvetica;
+	font-size: 1rem;
+	width: 50%;
+	text-align: left;
+}
+
+.lead {
+	/*font-weight: bold;*/
+	font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+	#more_info {
+		width: 90%;
+	}
+}
+
+#score, #about, #more_info, button, #credits, span {
+	/*font-family: 'Fahkwang', sans-serif;*/
+	font-family: 'Hammersmith One', sans-serif;
+
+}
+
+.inner span {
+	/*font-size: 0.8rem;*/
+}
+
+#random_text {
+	display: inline-block;
+	margin-bottom:0.1rem;
+}
+
+
+</style>
+</head>
+<header class="header">
+	<div class="header__inner">
+		<h1 class="header__title">Kupi Raur Poem Generator</h1>
+			<!-- <IMG SRC="animated_words_gif.gif"> -->
+	</div>
+</header>
+
+<body>
+<div class="outer">
+  <div class="middle">
+    <div class="inner">
+      <div id="poem">
+			<p>
+				<!-- Poem will fit here. -->
+			</p>
+		</div>
+
+		<span id="random_text">More! More! More! :D</span><br>
+		<button id="generator">Generate more!</button>
+    </div>
+  </div>
+</div>
+
+<div id="credits">
+👾 Maked by <a href="https://hehehefakewebsite.com" target="_blank">Jeffjeffjeff</a> · <a href="https://github.com/jeffreytjs" target="_blank">follow my work</a> 
+<br/>
+💎 Designed by <a href="https://hehehefakewebsite.com" target="_blank">Coming soon...</a> · <a href="https://hehehefakewebsite.com" target="_blank">follow my work</a> 
+<br/>
+🌌 Generated using GPT-2 · <a href="https://github.com/openai/gpt-2">Open AI</a> 
+<br/>
+🙌 Special thanks to <a href="https://minimaxir.com/">Max Woolf</a>
+</div>
+
+<div id="about"><a href="#">Behind the scenes</a></div>
+
+<div id="overlay">
+	<div id="more_info">
+	<p class="lead">
+	Kupi Raur is a for-fun poem generator based on the original work "Milk and Honey" of <a href="https://www.instagram.com/rupikaur_/?hl=en">Rupi Kaur</a>. It spiralled out of the desire to test AI's ability to learn from poets' style and pretty much memes derived from her work. 
+	</p>
+
+	<p>
+	I am deeply interested in NLP and one day I chanced upon this article by Max Woolf showcasing a <a href="https://minimaxir.com/2019/09/howto-gpt2/"> tutorial on the use of GPT-2</a> that was released by Open AI. GPT-2 has since been used on  for many text generating projects. 
+	</p>
+
+	<p>
+	Here's a bit of information on GPT-2:
+	<br/>
+	GPT-2 was trained simply to predict the next word using 8 million web pages which amounts to 40GB of Internet text. This meant that given any starting word, it would simply be able to guess the next word and eventually aims to create coherent texts.
+	<br/>
+	<br/>
+	So how were new poems generated?
+	<br/>
+	Now that it is smart enough to guess many next words coherently, I simply had to retrain it using Rupi Kaur's Honey and Milk book where each poem were demarcated specifically to preserve her writing style as much as possible.
+	</p>
+
+	<p>
+	However, not all poems were good and what you see here are only the few surviving ones that are decently good and not part of her original work. I hope you are still able to enjoy it nonetheless!
+	</p>
+
+	<p>
+	And in case I don't see you again,<br/>
+	Good morning,<br/>
+	Good afternoon and<br/>
+	Good night.<br/>
+	#IYKYK
+	</p>
+
+	<a href="#">close❌</a>
+	<br/><br/>
+	</div>
+</div>
+
+</body>
+</html>
