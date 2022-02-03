@@ -23,7 +23,7 @@
 
 		function RandomizeArray(arr){
     		return arr.sort(function(){
-      			return Math.random() > Math.random() ? 1 : -1;  
+      			return Math.random() > Math.random() ? 1 : -1;
     		})
   		}
 
@@ -59,8 +59,8 @@
 			setTimeout(next_step, 1000)
 			function next_step(){
 				if(counter < length) update_poem()
-				else{ 
-					$("#poem").html("That's all folks! (for now...)") 
+				else{
+					$("#poem").html("That's all folks! (for now...)")
 					$(".the-question").hide()
 					$("#about, #credits").fadeTo("slow",1)
 				}
@@ -91,7 +91,7 @@
 <style type="text/css">
 
 body {
-	background-image: url("poetry.jpg");
+	background-image: url("resources/poetry.jpg");
 	background-size: 110% 800%;                      /* <------ */
 	background-repeat: no-repeat;
 }
@@ -248,11 +248,11 @@ button:focus {
 </div>
 
 <div id="credits">
-👾 Maked by <a href="https://hehehefakewebsite.com" target="_blank">Jeffjeffjeff</a> · <a href="https://github.com/jeffreytjs" target="_blank">follow my work</a> 
+👾 Maked by <a href="https://hehehefakewebsite.com" target="_blank">Jeffjeffjeff</a> · <a href="https://github.com/jeffreytjs" target="_blank">follow my work</a>
 <br/>
-💎 Designed by <a href="https://hehehefakewebsite.com" target="_blank">Coming soon...</a> · <a href="https://hehehefakewebsite.com" target="_blank">follow my work</a> 
+💎 Designed by <a href="https://hehehefakewebsite.com" target="_blank">Coming soon...</a> · <a href="https://hehehefakewebsite.com" target="_blank">follow my work</a>
 <br/>
-🌌 Generated using GPT-2 · <a href="https://github.com/openai/gpt-2">Open AI</a> 
+🌌 Generated using GPT-2 · <a href="https://github.com/openai/gpt-2">Open AI</a>
 <br/>
 🙌 Special thanks to <a href="https://minimaxir.com/">Max Woolf</a>
 </div>
@@ -262,11 +262,11 @@ button:focus {
 <div id="overlay">
 	<div id="more_info">
 	<p class="lead">
-	Kupi Raur is a for-fun poem generator based on the original work "Milk and Honey" of <a href="https://www.instagram.com/rupikaur_/?hl=en">Rupi Kaur</a>. It spiralled out of the desire to test AI's ability to learn from poets' style and pretty much memes derived from her work. 
+	Kupi Raur is a for-fun poem generator based on the original work "Milk and Honey" of <a href="https://www.instagram.com/rupikaur_/?hl=en">Rupi Kaur</a>. It spiralled out of the desire to test AI's ability to learn from poets' style and pretty much memes derived from her work.
 	</p>
 
 	<p>
-	I am deeply interested in NLP and one day I chanced upon this article by Max Woolf showcasing a <a href="https://minimaxir.com/2019/09/howto-gpt2/"> tutorial on the use of GPT-2</a> that was released by Open AI. GPT-2 has since been used on  for many text generating projects. 
+	I am deeply interested in NLP and one day I chanced upon this article by Max Woolf showcasing a <a href="https://minimaxir.com/2019/09/howto-gpt2/"> tutorial on the use of GPT-2</a> that was released by Open AI. GPT-2 has since been used on  for many text generating projects.
 	</p>
 
 	<p>
